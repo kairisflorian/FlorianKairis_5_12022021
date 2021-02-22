@@ -10,28 +10,69 @@ header{
     background-color: rgb(245,234,242);
     height: 200px;
     border-bottom: 2px black solid;
+    font-size: 2rem;
 }
 
 header img{
     min-width: 200px;
 }
 
+header i{
+    margin-left: 10%;
+    color: #34302F;
+}
+
+.presentation{
+    height: 400px;
+    background-image: url(./images/camera-1130731_1920.jpg);
+    background-size: cover;
+    
+}
+
 #vitrine{
-    margin: 10% 5% 10% 5%;
+    margin: 10% 3% 8% 3%;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-around;
 }
 
-#product{
-    margin-top: 50px;
-    width: 300px;
+.fiche-produit{
+    max-width: 40%;
+    margin: 3%;
+    padding: 1%;
+    border: 1px solid black;
+    box-shadow: 13px 10px 21px -4px rgba(0,0,0,0.75);
+    font-size: 1.5rem;
+    color: #34302F;
 }
 
-#vitrine img{
-    width: 300px;
+a{
+    text-decoration: none;
+    color: #2F2F2F;
 }
 
+.fiche-produit img{
+    width: 100%;
+}
 
+.fiche-produit i {
+    position: relative;
+    bottom: 20%;
+    left: 85%;
+}
+
+footer{
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2% 0 2% 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #2F2F2F;
+    cursor: pointer;
+    border-top: 2px solid black;
+}
 
 
