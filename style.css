@@ -62,6 +62,12 @@ a{
     left: 85%;
 }
 
+#product{
+    background-color: lightblue;
+    height: 700px;
+    margin: 5%;
+}
+
 footer{
     height: 50px;
     display: flex;
