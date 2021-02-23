@@ -14,7 +14,7 @@ let getProductsDatas = request.onreadystatechange = function() {
             ficheProduit.classList.add ('fiche-produit');
             // J'importe ensuite les données relatives à chaque produit dans mon html
             ficheProduit.innerHTML = `
-                <img src='${product.imageUrl}' alt='image représentant un appareil photo modèle ${product.name}'/>
+                <img src='${product.imageUrl}' alt='Appareil photo modèle ${product.name}'/>
                 <p> ${product.name} </p>
                 <p> ${product.price} € </p>
                 <a href='./product.html?id=${product._id}'>
