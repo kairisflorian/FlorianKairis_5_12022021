@@ -33,7 +33,7 @@ selectLense.setAttribute ('name', 'lentille');
 let selectQuantity = document.createElement ('select');
 productCard.appendChild (selectQuantity);
 selectQuantity.setAttribute ('name', 'quantity');
-let quantite = ['--Selectionnez la quantité désirée--',1, 2, 3, 4, 5, 6, 7, 8, 9];
+let quantite = ['--Selectionnez la quantité souhaitée--',1, 2, 3, 4, 5, 6, 7, 8, 9];
 for (let nombre of quantite) {
     let quantityChoice = document.createElement ('option');
     selectQuantity.appendChild (quantityChoice);
@@ -56,9 +56,9 @@ let getProductDatas = request.onreadystatechange = function() {
         let product = JSON.parse(this.responseText);
         productPic.setAttribute ('src', product.imageUrl);
         productPic.setAttribute ('alt', `Appareil photo modèle ${product.name}`)
-        productName.innerHTML += product.name;
-        productDescription.innerHTML += product.description;
-        productPrice.innerHTML += product.price += ' €';
+        productName.innerHTML = product.name;
+        productDescription.innerHTML = product.description;
+        productPrice.innerHTML = (product.price /= 100) + ".00 €";
         // affichage du choix de la lentille
         for (let lense of product.lenses) {
             let lenseChoice = document.createElement ('option');
@@ -71,4 +71,5 @@ let getProductDatas = request.onreadystatechange = function() {
 
 request.open("GET", "http://localhost:3000/api/cameras/" + getParam());
 request.send();
+
 

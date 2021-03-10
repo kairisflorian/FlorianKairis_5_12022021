@@ -16,7 +16,7 @@ let getProductsDatas = request.onreadystatechange = function() {
             ficheProduit.innerHTML = `
                 <img src='${product.imageUrl}' alt='Appareil photo modèle ${product.name}'/>
                 <p> ${product.name} </p>
-                <p> ${product.price} € </p>
+                <p> ${product.price /= 100}.00 € </p>
                 <a href='./product.html?id=${product._id}'>
                     <i class="fas fa-shopping-cart"></i>
                 </a>
