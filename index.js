@@ -6,6 +6,7 @@ let getProductsDatas = request.onreadystatechange = function() {
     if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
         // L'API nous renvoie les données sous forme d'un tableau constitué de plusieurs objets
         let products = JSON.parse(this.responseText);
+        console.log(products);
         // Pour chaque produit, je crée une fiche que j'inclue dans ma section 'vitrine'
         for (let product of products) {
             let ficheProduit = document.createElement ('div');
