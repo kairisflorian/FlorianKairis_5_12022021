@@ -26,22 +26,40 @@
                 <th>Prix total</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-
-            </tr>
-        </tbody>
+        <tbody id="table-body"></tbody>
         <tfoot>
             <tr>
-                <th colspan="6">Montant de la commande:</th>
+                <th colspan="6" id="montant-total">Montant de la commande:</th>
             </tr>
         </tfoot>
     </table>
     <!-- Le formulaire de commande -->
-    
-    <!-- Les boutons -->
-    <button>Commander</button>
-    <button>Vider le panier</button>
+    <h1>Formulaire de commande</h1>
+    <form action="" method="POST">
+        <div class="form">
+            <label for="prenom">Prénom</label>
+            <input type="text" name="prenom" id="prenom" required>
+          </div>
+          <div class="form-example">
+            <label for="nom">Nom</label>
+            <input type="text" name="nom" id="nom" required>
+          </div>
+          <div class="form-example">
+            <label for="adresse">Adresse </label>
+            <input type="text" name="adresse" id="adresse" required>
+          </div>
+          <div class="form-example">
+            <label for="ville">Ville </label>
+            <input type="text" name="ville" id="ville" required>
+          </div>
+          <div class="form-example">
+            <label for="email">Email </label>
+            <input type="email" name="email" id="email" required>
+          </div>
+          <div class="form-example">
+            <input type="submit" value="Valider">
+          </div>
+    </form>
     <!-- Pied de page -->
     <footer>
         <p>Nous contacter</p>

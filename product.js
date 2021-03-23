@@ -33,14 +33,14 @@ selectLense.setAttribute ('name', 'lentille');
 let selectQuantity = document.createElement ('select');
 productCard.appendChild (selectQuantity);
 selectQuantity.setAttribute ('name', 'quantity');
-let quantite = ['--Selectionnez la quantité souhaitée--',1, 2, 3, 4, 5, 6, 7, 8, 9];
+let quantite = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 for (let nombre of quantite) {
     let quantityChoice = document.createElement ('option');
     selectQuantity.appendChild (quantityChoice);
     quantityChoice.setAttribute ('value', nombre);
-    selectQuantity.firstChild.setAttribute ('value',"");
-    quantityChoice.innerHTML += nombre;
+    quantityChoice.innerHTML = nombre;
 }
+
 
 //Création du bouton permettant l'ajout au panier
 let cartButton = document.createElement ('button');
