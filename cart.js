@@ -1,6 +1,7 @@
 let tableBody = document.getElementById ('table-body');
 let prixTotalCommande = document.getElementById ('montant-total');
 ammountArray = [];
+let product_id = [];
 
 
 //Créer une nouvelle ligne dans la tableau à chaque ajout d'un article au panier
@@ -46,9 +47,11 @@ for (let i = 0; i < localStorage.length; i++){
         montantCommande += price;
     }
     prixTotalCommande.innerHTML = "Montant total de la commande: " + montantCommande + ".00 €";
+    //Créer un tableau de strings product_id qu'on enverra au serveur
+    product_id.push(productDatasJson.id);
 }
 
 console.log(ammountArray);
+console.log(product_id);
 
-//Bouton permettant de supprimer un article du panier
-
+//Envoi de l'array product_id au serveur

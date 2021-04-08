@@ -78,6 +78,7 @@ let getProductDatas = request.onreadystatechange = function() {
                 price : product.price,
                 lense : selectLense.value,
                 quantity : selectQuantity.value,
+                id : getParam(),
             }
             let objLinea = JSON.stringify(productAddedToCart);
             localStorage.setItem("produit-"+getParam(), objLinea);
