@@ -1,8 +1,7 @@
 let tableBody = document.getElementById ('table-body');
 let prixTotalCommande = document.getElementById ('montant-total');
 ammountArray = [];
-let product_id = [];
-
+let products = [];
 
 //Créer une nouvelle ligne dans la tableau à chaque ajout d'un article au panier
 for (let i = 0; i < localStorage.length; i++){
@@ -48,10 +47,29 @@ for (let i = 0; i < localStorage.length; i++){
     }
     prixTotalCommande.innerHTML = "Montant total de la commande: " + montantCommande + ".00 €";
     //Créer un tableau de strings product_id qu'on enverra au serveur
-    product_id.push(productDatasJson.id);
+    products.push(productDatasJson.id);
 }
 
 console.log(ammountArray);
-console.log(product_id);
+console.log(products);
 
-//Envoi de l'array product_id au serveur
+// Création d'un objet contact au remplissage du formulaire
+let btnEnvoi = document.getElementById('btnEnvoi');
+
+//Requete
+btnEnvoi.addEventListener ('click', function(event){
+    event.preventDefault;
+    let contact = {
+        firstName: document.getElementById('prenom').value,
+        lastName: document.getElementById('nom').value,
+        address: document.getElementById('adresse').value,
+        city: document.getElementById('ville').value,
+        email: document.getElementById('email').value
+    };
+    let objet = {contact, products};
+    console.log(objet);
+    var request = new XMLHttpRequest();
+    request.open("POST", "http://localhost:3000/api/cameras/order");
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(JSON.stringify(objet));
+})
