@@ -14,20 +14,27 @@ for (let i = 0; i < localStorage.length; i++){
     let productPrice = document.createElement ('td');
     let productQuantity = document.createElement ('td');
     let productTotalPrice = document.createElement ('td');
+    let deleteProduct = document.createElement ('button');
+    deleteProduct.innerHTML = 'Supprimer du panier';
     productLine.appendChild (productPicLine);
     productPicLine.appendChild (productPic);
+    productPicLine.appendChild (deleteProduct);
     productLine.appendChild (productName);
     productLine.appendChild (productLense);
     productLine.appendChild (productPrice);
     productLine.appendChild (productQuantity);
     productLine.appendChild (productTotalPrice);
-    // On récupère la clé de nos produits mis au panier
+   // On récupère la clé de nos produits mis au panier
     let productId = localStorage.key(i);
     // On recupère les données de ces produits en JSON
     let productDatas = localStorage.getItem (productId);
     // On parse pour pouvoir utiliser les données
     let productDatasJson = JSON.parse (productDatas);
     // On affiche les données
+    deleteProduct.addEventListener('click', function(event){
+        localStorage.removeItem(productId);
+        window.open('cart.html');
+    })
     productPic.setAttribute ("src", productDatasJson.pic);
     productPic.classList.add ("table-img");
     productName.innerHTML = productDatasJson.name;
@@ -53,12 +60,13 @@ for (let i = 0; i < localStorage.length; i++){
 console.log(ammountArray);
 console.log(products);
 
-// Création d'un objet contact au remplissage du formulaire
-let btnEnvoi = document.getElementById('btnEnvoi');
+
+
+
 
 //Requete
+let btnEnvoi = document.getElementById('btnEnvoi');
 btnEnvoi.addEventListener ('click', function(event){
-    event.preventDefault;
     let contact = {
         firstName: document.getElementById('prenom').value,
         lastName: document.getElementById('nom').value,
@@ -67,9 +75,9 @@ btnEnvoi.addEventListener ('click', function(event){
         email: document.getElementById('email').value
     };
     let objet = {contact, products};
-    console.log(objet);
     var request = new XMLHttpRequest();
     request.open("POST", "http://localhost:3000/api/cameras/order");
     request.setRequestHeader("Content-Type", "application/json");
     request.send(JSON.stringify(objet));
+    console.log(request);
 })
