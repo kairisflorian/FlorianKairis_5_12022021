@@ -14,11 +14,8 @@ for (let i = 0; i < localStorage.length; i++){
     let productPrice = document.createElement ('td');
     let productQuantity = document.createElement ('td');
     let productTotalPrice = document.createElement ('td');
-    let deleteProduct = document.createElement ('button');
-    deleteProduct.innerHTML = 'Supprimer du panier';
     productLine.appendChild (productPicLine);
     productPicLine.appendChild (productPic);
-    productPicLine.appendChild (deleteProduct);
     productLine.appendChild (productName);
     productLine.appendChild (productLense);
     productLine.appendChild (productPrice);
@@ -30,11 +27,15 @@ for (let i = 0; i < localStorage.length; i++){
     let productDatas = localStorage.getItem (productId);
     // On parse pour pouvoir utiliser les données
     let productDatasJson = JSON.parse (productDatas);
-    // On affiche les données
+    // Creation d'un bouton pour supprimer un article du panier 
+    let deleteProduct = document.createElement ('button');
+    deleteProduct.innerHTML = 'Supprimer du panier';
+    productPicLine.appendChild (deleteProduct);
     deleteProduct.addEventListener('click', function(event){
         localStorage.removeItem(productId);
-        window.open('cart.html');
+        location.reload(true);
     })
+    // On affiche les données
     productPic.setAttribute ("src", productDatasJson.pic);
     productPic.classList.add ("table-img");
     productName.innerHTML = productDatasJson.name;
