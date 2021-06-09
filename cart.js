@@ -2,6 +2,8 @@ let tableBody = document.getElementById ('table-body');
 let prixTotalCommande = document.getElementById ('montant-total');
 ammountArray = [];
 let products = [];
+let montantCommande;
+let commande;
 
 //Créer une nouvelle ligne dans la tableau à chaque ajout d'un article au panier
 for (let i = 0; i < localStorage.length; i++){
@@ -12,7 +14,7 @@ for (let i = 0; i < localStorage.length; i++){
     let productPic = document.createElement ('img');
     let productLense = document.createElement ('td');
     let productPrice = document.createElement ('td');
-    let productQuantity = document.createElement ('td');
+    let productQuantity = document.createElement ('select');
     let productTotalPrice = document.createElement ('td');
     productLine.appendChild (productPicLine);
     productPicLine.appendChild (productPic);
@@ -26,7 +28,7 @@ for (let i = 0; i < localStorage.length; i++){
     // On recupère les données de ces produits en JSON
     let productDatas = localStorage.getItem (productId);
     // On parse pour pouvoir utiliser les données
-    let productDatasJson = JSON.parse (productDatas);
+    let productDatasJson = JSON.parse(productDatas);
     // Creation d'un bouton pour supprimer un article du panier 
     let deleteProduct = document.createElement ('button');
     deleteProduct.innerHTML = 'Supprimer du panier';
@@ -43,13 +45,16 @@ for (let i = 0; i < localStorage.length; i++){
     productPrice.innerHTML = `${productDatasJson.price}.00 €`;
     // Retourner un nombre plutôt qu'une chaine de caractère pour la quantité
     let quantityInNumber = parseInt(productDatasJson.quantity);
-    productQuantity.innerHTML = quantityInNumber;
+    // Modifier la quantitée souhaitée directement dans le panier
+    let quantiteDeBase = document.createElement ('option');
+    productQuantity.appendChild (quantiteDeBase);
+    //productQuantity.innerHTML = quantityInNumber;
     // prix total = prix unitaire * quantité
     productTotalPrice.innerHTML = productDatasJson.price*quantityInNumber+".00 €";
     productTotalPrice = productDatasJson.price * quantityInNumber;
     // Chaque prix total est ajouté à un tableau, la somme des valeurs de ce tableau donnera le montant de la commande
     ammountArray.push(productTotalPrice);
-    let montantCommande = 0;
+    montantCommande = 0;
     for (let price of ammountArray){
         montantCommande += price;
     }
@@ -62,12 +67,12 @@ console.log(ammountArray);
 console.log(products);
 
 
-
-
-
 //Requete
+let request = new XMLHttpRequest();
+let cartForm = document.getElementById('cartForm');
 let btnEnvoi = document.getElementById('btnEnvoi');
 btnEnvoi.addEventListener ('click', function(event){
+    event.preventDefault();
     let contact = {
         firstName: document.getElementById('prenom').value,
         lastName: document.getElementById('nom').value,
@@ -76,9 +81,18 @@ btnEnvoi.addEventListener ('click', function(event){
         email: document.getElementById('email').value
     };
     let objet = {contact, products};
-    var request = new XMLHttpRequest();
     request.open("POST", "http://localhost:3000/api/cameras/order");
     request.setRequestHeader("Content-Type", "application/json");
     request.send(JSON.stringify(objet));
-    console.log(request);
+    let sendDatas = request.onreadystatechange = function() {
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 201) {
+            commande = JSON.parse(this.responseText);
+            console.log(commande);
+            localStorage.setItem('orderId', commande.orderId);
+            localStorage.setItem('prenom', contact.firstName);
+            localStorage.setItem('montant', montantCommande);
+            window.location = 'confirm.html'
+        }
+    }
 })
+
