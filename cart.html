@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <title>Panier</title>
@@ -34,10 +35,10 @@
         </tfoot>
     </table>
     <!-- Le formulaire de commande -->
-    <form name="cartForm" id="cartForm">
+    <form name="cartForm" id="cartForm" onsubmit="return false">
       <div class="form">
           <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" pattern="[A-Za-z]{2,20}" required>
+          <input type="text" id="prenom" required>
       </div>
       <div class="form">
           <label for="nom">Nom</label>

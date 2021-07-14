@@ -33,7 +33,7 @@ selectLense.setAttribute ('name', 'lentille');
 let selectQuantity = document.createElement ('select');
 productCard.appendChild (selectQuantity);
 selectQuantity.setAttribute ('name', 'quantity');
-let quantite = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let quantite = [1, 2, 3, 4, 5];
 for (let nombre of quantite) {
     let quantityChoice = document.createElement ('option');
     selectQuantity.appendChild (quantityChoice);

@@ -6,7 +6,7 @@ body{
 header{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     background-color: rgb(245,234,242);
     height: 200px;
     border-bottom: 2px black solid;
@@ -112,7 +112,7 @@ footer{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 2% 0 2% 0;
+    margin: 2% 0 0 0;
     font-weight: bold;
     font-size: 1.5rem;
     color: #2F2F2F;
@@ -121,7 +121,7 @@ footer{
 }
 
 .table-img{
-    width: 30%;
+    width: 40%;
 }
 
 table{
@@ -167,3 +167,21 @@ form div + div {
     margin-left: .5em;
 }
   
+#titre {
+    height: 600px;
+    text-align: center;
+    padding-top: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.productPicLine {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.fa-trash {
+    color: #34302F;
+    cursor: pointer;
+}
